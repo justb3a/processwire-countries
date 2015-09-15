@@ -1,0 +1,188 @@
+<?php
+
+/**
+ * ContinentsAndCountries
+ *
+ * See README.md for usage instructions.
+ *
+ * ProcessWire 2.x
+ * Licensed under GNU/GPL v2, see LICENSE.TXT
+ *
+ *
+ * @author Tabea David <info@justonestep.de>
+ * @version 0.0.1
+ * @copyright Copyright (c) 2015 KF Interactive, www.kf-interactive.com, <info@kf-interactive.com>
+ * @see https://github.com/justonestep/processwire-textformatter-normalizeutf8
+ * @see http://www.processwire.com
+ */
+
+/**
+ * Class ContinentsAndCountries
+ */
+class ContinentsAndCountries extends WireData implements Module {
+
+  /**
+   * Retrieves module meta data
+   * Implementation of the Module interface
+   *
+   * @return array
+   * @see http://processwire.com/apigen/class-Module.html
+   */
+  public static function getModuleInfo() {
+    return array(
+      'title' => 'Continent and country names',
+      'summary' => 'Tables for continent names, country names and their ISO codes.',
+      'version' => 001,
+      'href' => 'https://github.com/justonestep/processwire-textformatterii-normalizeutf8'
+    );
+  }
+
+  /**
+   * Setup default values
+   *
+   */
+  public function __construct() {
+    $this->set('tableContinents', 'continents');
+    $this->set('tableCountries', 'countries');
+  }
+
+  /**
+   * getAll
+   */
+  public function getAll() {
+    $database = $this->wire('database');
+    $table = $database->escapeTable($this->tableCountries);
+
+    $query = $database->prepare("SELECT * FROM `$table`");
+    $query->bindValue(":continent", strtoupper($continent));
+    $query->execute();
+    return $query->fetchAll(PDO::FETCH_ASSOC);
+  }
+
+  /**
+   * getByContinent
+   * @param int $continent
+   */
+  public function getByContinent($continent) {
+    $database = $this->wire('database');
+    $table = $database->escapeTable($this->tableCountries);
+
+    $query = $database->prepare("SELECT code, name FROM `$table` WHERE continent=:continent");
+    $query->bindValue(":continent", strtoupper($continent));
+    $query->execute();
+    return $query->fetchAll(PDO::FETCH_ASSOC);
+  }
+
+  private function buildTables($tableCo) {
+    $database = $this->wire('database');
+    $table = $database->escapeTable($tableCo);
+
+    if ($tableCo === $this->tableContinents) {
+      require_once(wire('config')->paths->Countries . 'lib/Continents.php');
+
+      $continents = new Continents();
+      foreach ($continents->populate() as $data) {
+        try {
+          $query = $database->prepare("INSERT INTO `{$table}` SET code=:code, name=:name");
+          $query->bindValue(":code", $data->code);
+          $query->bindValue(":name", $data->name);
+          $query->execute();
+        } catch(Exception $e) {
+          // catch any errors, just to prevent anything from ever being reported to screen
+          $this->error("Unable to complete this step");
+          return;
+        }
+      }
+
+    } elseif ($tableCo === $this->tableCountries) {
+      require_once(wire('config')->paths->Countries . 'lib/Countries.php');
+
+      $countries = new Countries();
+      foreach ($countries->populate() as $data) {
+        try {
+          $query = $database->prepare(
+            "INSERT INTO `{$table}` SET code=:code, continent=:continent, name=:name, iso=:iso, number=:number, fullname=:fullname"
+          );
+          $query->bindValue(":code", $data->code);
+          $query->bindValue(":continent", $data->continent);
+          $query->bindValue(":name", $data->name);
+          $query->bindValue(":iso", $data->iso);
+          $query->bindValue(":number", $data->number);
+          $query->bindValue(":fullname", $data->fullname);
+          $query->execute();
+        } catch(Exception $e) {
+          // catch any errors, just to prevent anything from ever being reported to screen
+          $this->error("Unable to complete this step");
+          return;
+        }
+      }
+    }
+  }
+
+  private function getSql($tableCo) {
+    $sql = '';
+    $database = $this->wire('database');
+    $table = $database->escapeTable($tableCo);
+    $engine = $this->wire('config')->dbEngine;
+
+    if ($tableCo === $this->tableContinents) {
+      $sql = "CREATE TABLE `$table` ( " .
+        "id INT unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT, " .
+        "code char(2) NOT NULL, " .
+        "name varchar(255) NOT NULL" .
+        ") ENGINE=$engine DEFAULT CHARSET=ascii;";
+    } elseif ($tableCo === $this->tableCountries) {
+      $sql = "CREATE TABLE `$table` ( " .
+        "id INT unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT, " .
+        "code char(2) NOT NULL, " .
+        "name varchar(255) NOT NULL, " .
+        "fullname varchar(255) NOT NULL, " .
+        "iso char(3) NOT NULL, " . // three-letter country code (ISO 3166-1 alpha-3)
+        "number smallint(3) ZEROFILL NOT NULL, " . // three-digit country number (ISO 3166-1 numeric)
+        "continent char(2) NOT NULL" .
+        ") ENGINE=$engine DEFAULT CHARSET=ascii;";
+    }
+
+    return $sql;
+  }
+
+  /**
+   * install routine
+   */
+  public function ___install() {
+    $database = $this->wire('database');
+
+    foreach (array($this->tableContinents, $this->tableCountries) as $tableCo) {
+      $sql = $this->getSql($tableCo);
+
+      try {
+        $this->message("Creating table: $tableCo", Notice::log);
+        $database->exec($sql);
+      } catch(Exception $e) {
+        $this->error($e->getMessage(), Notice::log);
+        return;
+      }
+
+      $this->buildTables($tableCo);
+    }
+
+  }
+
+  /**
+   * uninstall routine
+   */
+  public function ___uninstall() {
+    $database = $this->wire('database');
+
+    foreach (array($this->tableContinents, $this->tableCountries) as $tableCo) {
+      $table = $database->escapeTable($tableCo);
+
+      try {
+        $database->exec("DROP TABLE `$table`");
+      } catch(Exception $e) {
+        $this->error($e->getMessage(), Notice::log);
+      }
+    }
+  }
+
+}
