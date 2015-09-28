@@ -10,9 +10,9 @@
  *
  *
  * @author Tabea David <info@justonestep.de>
- * @version 0.0.1
+ * @version 0.0.2
  * @copyright Copyright (c) 2015 KF Interactive, www.kf-interactive.com, <info@kf-interactive.com>
- * @see https://github.com/justonestep/processwire-textformatter-normalizeutf8
+ * @see https://github.com/justonestep/processwire-countries
  * @see http://www.processwire.com
  */
 
@@ -32,8 +32,8 @@ class ContinentsAndCountries extends WireData implements Module {
     return array(
       'title' => 'Continent and country names',
       'summary' => 'Tables for continent names, country names and their ISO codes.',
-      'version' => 001,
-      'href' => 'https://github.com/justonestep/processwire-textformatterii-normalizeutf8'
+      'version' => 002,
+      'href' => 'https://github.com/justonestep/processwire-countries '
     );
   }
 
@@ -47,38 +47,111 @@ class ContinentsAndCountries extends WireData implements Module {
   }
 
   /**
-   * getAll
+   * getAll continents
    */
-  public function getAll() {
+  public function getContinents() {
+    $database = $this->wire('database');
+    $table = $database->escapeTable($this->tableContinents);
+
+    $query = $database->prepare("SELECT code, name FROM `$table`");
+    return $this->fetchResult($query);
+  }
+
+  /**
+   * getAll countries
+   */
+  public function getCountries() {
     $database = $this->wire('database');
     $table = $database->escapeTable($this->tableCountries);
 
-    $query = $database->prepare("SELECT * FROM `$table`");
-    $query->bindValue(":continent", strtoupper($continent));
-    $query->execute();
-    return $query->fetchAll(PDO::FETCH_ASSOC);
+    $query = $database->prepare("SELECT code, name FROM `$table`");
+    return $this->fetchResult($query);
   }
 
   /**
    * getByContinent
    * @param int $continent
    */
-  public function getByContinent($continent) {
+  public function findByContinent($continent) {
     $database = $this->wire('database');
     $table = $database->escapeTable($this->tableCountries);
 
     $query = $database->prepare("SELECT code, name FROM `$table` WHERE continent=:continent");
-    $query->bindValue(":continent", strtoupper($continent));
-    $query->execute();
-    return $query->fetchAll(PDO::FETCH_ASSOC);
+    $query->bindValue(":continent", $continent);
+    return $this->fetchResult($query);
   }
 
+  /**
+   * find by parameters
+   * @param string $table
+   * @param array $select
+   * @param array $options
+   */
+  public function findBy($table = 'countries', $select = array(), $options = array()) {
+    $database = $this->wire('database');
+    $tableName = $table === 'countries' ? $this->tableCountries : $this->tableContinents;
+    $table = $database->escapeTable($tableName);
+    $fields = !empty($select) ? implode(', ', $select) : '*';
+
+    $condition = '';
+    $where = array();
+    if (!empty($options)) {
+      foreach ($options as $key => $value) {
+        $where[] = "$key=:$key";
+      }
+
+      $condition = ' WHERE ' . implode(' && ', $where);
+    }
+
+    $query = $database->prepare("SELECT $fields FROM `$table` $condition");
+
+    if (!empty($options)) {
+      foreach ($options as $key => $value) {
+        $query->bindValue(":$key", $value);
+      }
+    }
+
+    return $this->fetchResult($query);
+  }
+
+  /**
+   * fetch result
+   * @param pdostatement $query
+   */
+  private function fetchResult($query) {
+    try {
+      $query->execute();
+      $res = $query->fetchAll(PDO::FETCH_OBJ);
+    } catch (Exception $e) {
+      $this->log->save('errors', '[ContinentsAndCountries]: ' . $e->getMessage() . '; "' . $query->queryString . '"');
+      $res = array();
+    }
+
+    if (!empty($res)) {
+      // get translated version if available
+      foreach ($res as &$r) {
+        $r->name = __($r->name, $this->config->paths->ContinentsAndCountries . 'lib/ContinentsAndCountriesTranslation.php');
+      }
+
+      // sort by name asc
+      usort($res, function($a, $b) {
+        return strcmp($a->name, $b->name);
+      });
+    }
+
+    return $res;
+  }
+
+  /**
+   * build tables
+   * @param string $tableCo table name
+   */
   private function buildTables($tableCo) {
     $database = $this->wire('database');
     $table = $database->escapeTable($tableCo);
 
     if ($tableCo === $this->tableContinents) {
-      require_once(wire('config')->paths->Countries . 'lib/Continents.php');
+      require_once(wire('config')->paths->ContinentsAndCountries . 'lib/Continents.php');
 
       $continents = new Continents();
       foreach ($continents->populate() as $data) {
@@ -95,7 +168,7 @@ class ContinentsAndCountries extends WireData implements Module {
       }
 
     } elseif ($tableCo === $this->tableCountries) {
-      require_once(wire('config')->paths->Countries . 'lib/Countries.php');
+      require_once(wire('config')->paths->ContinentsAndCountries . 'lib/Countries.php');
 
       $countries = new Countries();
       foreach ($countries->populate() as $data) {
@@ -119,6 +192,10 @@ class ContinentsAndCountries extends WireData implements Module {
     }
   }
 
+  /**
+   * get sql for create table
+   * @param string $tableCo table name
+   */
   private function getSql($tableCo) {
     $sql = '';
     $database = $this->wire('database');
