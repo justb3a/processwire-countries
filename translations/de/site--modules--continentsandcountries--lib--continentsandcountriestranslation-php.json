@@ -1,0 +1,450 @@
+{
+    "file": "site\/modules\/ContinentsAndCountries\/lib\/ContinentsAndCountriesTranslation.php",
+    "textdomain": "site--modules--continentsandcountries--lib--continentsandcountriestranslation-php",
+    "translations": {
+        "d8b00929dec65d422303256336ada04f": {
+            "text": "Deutschland"
+        },
+        "0309a6c666a7a803fdb9db95de71cf01": {
+            "text": "Frankreich"
+        },
+        "f5cd262901883dff68d06b215fb0f28e": {
+            "text": "Afrika"
+        },
+        "154a67340e8c14dd5253dc4ff6120197": {
+            "text": "Asien"
+        },
+        "912d59cdf1d3f551fae21f6f0062258f": {
+            "text": "Europa"
+        },
+        "5ffec2d87ab548202f8b549af380913a": {
+            "text": "Nordamerika"
+        },
+        "aab422acb3d2334a6deca0e1495745c2": {
+            "text": "S\u00fcdamerika"
+        },
+        "2d8836190888267b97ce332cad2aa247": {
+            "text": "Ozeanien"
+        },
+        "44b439ba9975f8e802b456777c54a854": {
+            "text": "Antarktika"
+        },
+        "cf17427d97113289c5960f75925668ea": {
+            "text": "\u00c5land-Inseln"
+        },
+        "c420ddff824a5c0eec70dd23d62496bc": {
+            "text": "Albanien"
+        },
+        "575b9408b6daa2ddcefbcf6d81c9b4c9": {
+            "text": "Algerien"
+        },
+        "b86f99753a08d00fa3ca946d07ecac29": {
+            "text": "Amerikanisch-Samoa"
+        },
+        "f7e68bf0791888ebcd5bfc62e022aa83": {
+            "text": "Antigua und Barbuda"
+        },
+        "3536be57ce0713954e454ae6c53ec023": {
+            "text": "Argentinien"
+        },
+        "a00c273f0f497484093fa94865cf5ca5": {
+            "text": "Armenien"
+        },
+        "4442e4af0916f53a07fb8ca9a49b98ed": {
+            "text": "Australien"
+        },
+        "9891739094756d2605946c867b32ad28": {
+            "text": "\u00d6sterreich"
+        },
+        "7176f8c3bccfdf02322c73f7a0bc9688": {
+            "text": "Aserbaidschan"
+        },
+        "f78a77f631d275aac6a914a17fe1b885": {
+            "text": "Bangladesch"
+        },
+        "6542f875eaa09a5c550e5f3986400ad9": {
+            "text": "Wei\u00dfrussland"
+        },
+        "6c1674d14bf5f95742f572cddb0641a7": {
+            "text": "Belgien"
+        },
+        "28aaafc355915903ce4a7e1d3af3bc4e": {
+            "text": "Bolivien"
+        },
+        "96a6dd711874d4323dc2d3f932bd2ed3": {
+            "text": "Bosnien Herzegovina"
+        },
+        "ce0daee7632eb95b5afce617fdd5c002": {
+            "text": "Bouvet-Insel (Bouvetoya)"
+        },
+        "42537f0fb56e31e20ab9c2305752087d": {
+            "text": "Brasilien"
+        },
+        "d1c83f5defc2c5d5771cdc72080ee0ff": {
+            "text": "British Indian Ocean Territory (Chagos-Archipel)"
+        },
+        "ce3cad16af3a29a7f6367ffb97744fb4": {
+            "text": "Britische Jungferninseln"
+        },
+        "01a151debf2bfee8906f43f4342eb10b": {
+            "text": "Bulgarien"
+        },
+        "06c7a3c3a3344a62864b951aec4df830": {
+            "text": "Kambodscha"
+        },
+        "4be25f9d27da71d4e98775668b5b12af": {
+            "text": "Kamerun"
+        },
+        "445d337b5cd5de476f99333df6b0c2a7": {
+            "text": "Kanada"
+        },
+        "81975d05c61d8de83f46487739fd77cf": {
+            "text": "Kap Verde"
+        },
+        "6802039d41676bdd09823704b0b9ba92": {
+            "text": "Cayman Inseln"
+        },
+        "aa293d284f52b08da5ba7fe7792fe9c3": {
+            "text": "Zentralafrikanische Republik"
+        },
+        "e03653dedd6f4e142f4aca131995964f": {
+            "text": "Tschad"
+        },
+        "1c5112b81b010632b5848ed68cae206d": {
+            "text": "Weihnachtsinseln"
+        },
+        "0c090e413a36e797b0a6f837b56e04ed": {
+            "text": "Kokosinseln (Keelinginseln)"
+        },
+        "ef3388cc5659bccb742fb8af762f1bfd": {
+            "text": "Kolumbien"
+        },
+        "4234d1794dd33c1b6ed975eab5148040": {
+            "text": "Komoren"
+        },
+        "e496c53293c4103dc7ef0820eee96954": {
+            "text": "Kongo"
+        },
+        "4cddaf95370d849a891c1c6eb5c63243": {
+            "text": "Cookinseln"
+        },
+        "560d4c6ff431c86546f3fcec72c748c7": {
+            "text": "Kroatien"
+        },
+        "33cac763789c407f405b2cf0dce7df89": {
+            "text": "Kuba"
+        },
+        "ea2ba3f8011e19e3101ce65fdcefbcc4": {
+            "text": "Zypern"
+        },
+        "51802d8bb965d0e5be697f07d16922e8": {
+            "text": "Tschechien"
+        },
+        "424214945ba5615eca039bfe5d731c09": {
+            "text": "D\u00e4nemark"
+        },
+        "662c15622f9c9c5decc0db80edb6c416": {
+            "text": "Dominikanische Republik"
+        },
+        "e31959fe2842dacea4d16d36e9813620": {
+            "text": "\u00c4gypten"
+        },
+        "a38c2761908be5cef4a98ef5b3402ac9": {
+            "text": "\u00c4quatorialguinea"
+        },
+        "7755415a9fe7022060b98a689236ccd2": {
+            "text": "Estland"
+        },
+        "e299d7cb0f7866cce7d90da2af14047c": {
+            "text": "\u00c4thiopien"
+        },
+        "76b88e7899abb3bfdd4b55b8c52726b0": {
+            "text": "F\u00e4r\u00f6er Inseln"
+        },
+        "753546f9ffaba8d8512a2fc92b35dd94": {
+            "text": "Falklandinseln (Malvinas)"
+        },
+        "6f781c6559a0c605da918096bdb69edf": {
+            "text": "Finnland"
+        },
+        "1cab30fe45c3aee88dc7bc9f907cd239": {
+            "text": "Franz\u00f6sisch-Guayana"
+        },
+        "8e49db69269b7f99afa25722e87fa67e": {
+            "text": "Franz\u00f6sisch Polynesien"
+        },
+        "369976b629cf2ee3acb26a10601e291b": {
+            "text": "Franz\u00f6sisch S\u00fcdliche Territorien"
+        },
+        "eada819634d0164c6a7547bdcc405033": {
+            "text": "Georgien"
+        },
+        "6b718641741f992e68ec3712718561b8": {
+            "text": "Griechenland"
+        },
+        "583eda79d32f7c1cb0840862787a73ca": {
+            "text": "Gr\u00f6nland"
+        },
+        "ceb6a5d6036c95ec400622d2fbb5eb18": {
+            "text": "Heard und McDonald-Inseln"
+        },
+        "16c0dfbfc8f209c0d4cf4eb6dc56fc20": {
+            "text": "Heiliger Stuhl (Vatikanstadt)"
+        },
+        "fa79c3005daec47ecff84a116a0927a1": {
+            "text": "Ungarn"
+        },
+        "b78edab0f52e0d6c195fd0d8c5709d26": {
+            "text": "Island"
+        },
+        "7d31e0da1ab99fe8b08a22118e2f402b": {
+            "text": "Indien"
+        },
+        "4647d00cf81f8fb0ab80f753320d0fc9": {
+            "text": "Indonesien"
+        },
+        "5ae2ff99743a8487c917e98bbf3db2d3": {
+            "text": "Irak"
+        },
+        "06e415f918c577f07328a52e24f75d43": {
+            "text": "Irland"
+        },
+        "1007e1b7f894dfbf72a0eaa80f3bc57e": {
+            "text": "Italien"
+        },
+        "1add2eb41fcae9b2a15b4a7d68571409": {
+            "text": "Jamaika"
+        },
+        "6ea1e24d60afddf388b06f8243c45b70": {
+            "text": "Jordanien"
+        },
+        "7c1a943bf29d2c753fb935e99428482c": {
+            "text": "Kasachstan"
+        },
+        "94984a8c4896946d9bafd24959cb6181": {
+            "text": "Kenia"
+        },
+        "7102d0a4f4fcb433349e19704532c179": {
+            "text": "Kirgisische Republik"
+        },
+        "81a6b6e5e6a1d60ce3bac4eee20444eb": {
+            "text": "Laos"
+        },
+        "a09f4b2ae67f0a63ab8912047a1a1b55": {
+            "text": "Lettland"
+        },
+        "b45ff92cc522bb89bfc3b8ef3fc21b7d": {
+            "text": "Libanon"
+        },
+        "742b8abe5776a6d942a92ce7dc7d84a0": {
+            "text": "Libyen"
+        },
+        "d9051e0b77f8bb5521389618e70e2ada": {
+            "text": "Litauen"
+        },
+        "06630c890abadde9228ea818ce52b621": {
+            "text": "Luxemburg"
+        },
+        "5547baeda33255ad8f5307fc92cb589e": {
+            "text": "Mazedonien"
+        },
+        "b5bcce260d9e303ca0e63f055187ed28": {
+            "text": "Madagaskar"
+        },
+        "62235142f3fca96e1f2cd0ed4a7de48d": {
+            "text": "Malediven"
+        },
+        "0d682c020f9347a5cfaa8fbd18e92ead": {
+            "text": "Marshallinseln"
+        },
+        "d7fe73b6846dfc672236e636aa2cf6b5": {
+            "text": "Mauretanien"
+        },
+        "8dbb07a18d46f63d8b3c8994d5ccc351": {
+            "text": "Mexiko"
+        },
+        "19a5a05a4982fef88f96039a43dbcfd8": {
+            "text": "Mikronesien"
+        },
+        "0c12f5495afe76d9242ed25668979de9": {
+            "text": "Moldawien"
+        },
+        "bb6a72b6a93150d4181e50496fc15f5a": {
+            "text": "Mongolei"
+        },
+        "4d4a1722d8e85909a576da2c42878ff0": {
+            "text": "Marokko"
+        },
+        "a6d3bea3fa66775952e080b90bb0c4f1": {
+            "text": "Mosambik"
+        },
+        "a67d4cbdd1b59e0ffccc6bafc83eb033": {
+            "text": "Niederlande"
+        },
+        "53a952d732c715fb1b34898400320751": {
+            "text": "Neu-Kaledonien"
+        },
+        "c51ed580ea5e20c910d951f692512b4d": {
+            "text": "Neuseeland"
+        },
+        "9e7a0ea8ab86778f66df4dfc0f75438e": {
+            "text": "Norfolkinsel"
+        },
+        "d3dbf1b55f9b0c2a605046b9f14f720a": {
+            "text": "N\u00f6rdliche Marianen"
+        },
+        "d5b9290a0b67727d4ba1ca6059dc31a6": {
+            "text": "Norwegen"
+        },
+        "e5f1fbdf8ac9b11da2bef5e0933e94cc": {
+            "text": "Pal\u00e4stinensische Autonomiegebiete"
+        },
+        "f670d3806d530c3e5cb1f31dca457751": {
+            "text": "Papua-Neuguinea"
+        },
+        "77dab2f81a6c8c9136efba7ab2c4c0f2": {
+            "text": "Philippinen"
+        },
+        "e047169b9d799abe32c00bc7891376ed": {
+            "text": "Pitcairninseln"
+        },
+        "94880bda83bda77c5692876700711f15": {
+            "text": "Polen"
+        },
+        "7cc7ef17c45527cf90fcf27516794d21": {
+            "text": "Katar"
+        },
+        "0c7d5ae44b2a0be9ebd7d6b9f7d60f20": {
+            "text": "Rum\u00e4nien"
+        },
+        "07d62aa19a9a95c07515769b604bad36": {
+            "text": "Russische F\u00f6deration"
+        },
+        "9d7ed5d77d647e89c3cc11757d651dc2": {
+            "text": "Ruanda"
+        },
+        "8773d2013b9c3fddd0f7fb378be8ea5d": {
+            "text": "Saint-Barth\u00e9lemy"
+        },
+        "a627bea6213a8682b87747f822cd376a": {
+            "text": "St. Helena"
+        },
+        "5976169ac1852fff6f0b9095100407fc": {
+            "text": "St. Kitts und Nevis"
+        },
+        "d1ef233007d706d71aa6d46642d5f804": {
+            "text": "St. Lucia"
+        },
+        "26a0859a2c10745426a8c452020830db": {
+            "text": "St. Martin"
+        },
+        "30ce3dcbcc38394722184a4bfd423d56": {
+            "text": "Saint-Pierre und Miquelon"
+        },
+        "c6f5008606ccd26c840a52657d671c4b": {
+            "text": "St. Vincent und die Grenadinen"
+        },
+        "aca4f717a9933ddf7ab0ffc877d0ed48": {
+            "text": "S\u00e3o Tom\u00e9 und Pr\u00edncipe"
+        },
+        "b835b521c29f399c78124c4b59341691": {
+            "text": "Saudi Arabien"
+        },
+        "2ff6e535bd2f100979a171ad430e642b": {
+            "text": "Serbien"
+        },
+        "d2e4449b45608e33e472d939a73868f7": {
+            "text": "Seychellen"
+        },
+        "458e4cbc78201c1aec5fc53a31c59378": {
+            "text": "Singapur"
+        },
+        "7f09d0f459e75e3516fc1ee9c571a720": {
+            "text": "Sint Maarten (niederl\u00e4ndischen Teil)"
+        },
+        "195d5c5996033739a3e50b39ac1890b2": {
+            "text": "Slowakei (Slowakische Republik)"
+        },
+        "00247297c394dd443dc97067830c35f4": {
+            "text": "Slowenien"
+        },
+        "a573f4ed911c3b437599818762263a0c": {
+            "text": "Salomon-Inseln"
+        },
+        "c89bc418c38da77213c6c6e03cac2510": {
+            "text": "S\u00fcdafrika"
+        },
+        "d2e2461617c12efb6ee5ba50ffd707ad": {
+            "text": "S\u00fcdgeorgien und die S\u00fcdlichen Sandwichinseln"
+        },
+        "0a6355f86240762961997e70c5e7087d": {
+            "text": "S\u00fcd-Sudan"
+        },
+        "907eba32d950bfab68227fd7ea22999b": {
+            "text": "Spanien"
+        },
+        "f9788a41e303e56b2f44aff680c90891": {
+            "text": "Svalbard und Jan Mayen"
+        },
+        "c8f4261f9f46e6465709e17ebea7a92b": {
+            "text": "Schweden"
+        },
+        "3ad08396dc5afa78f34f548eea3c1d64": {
+            "text": "Schweiz"
+        },
+        "783c6baf8592ab8c2e7d03911ba1483f": {
+            "text": "Syrien"
+        },
+        "b5a9722262bbb7a7449ebc0f4394c901": {
+            "text": "Tadschikistan"
+        },
+        "c03b1123e45fa00da3142e0424ee5eec": {
+            "text": "Tansania"
+        },
+        "0a25bbf25b60f1908597d7d60e26696e": {
+            "text": "Osttimor"
+        },
+        "63965a52775c39cd64c3ef0248d585b1": {
+            "text": "Trinidad und Tobago"
+        },
+        "d6dacba23ab4a1d5b72f223bfb010a05": {
+            "text": "Tunesien"
+        },
+        "221cdfb73049678e244380b45872cbb2": {
+            "text": "T\u00fcrkei"
+        },
+        "be741c06c32a1f9d444e9607a126832d": {
+            "text": "Turks- und Caicosinseln"
+        },
+        "8f6f28f0d2061af28bcf49d1725b2cbd": {
+            "text": "Vereinigte Arabische Emirate"
+        },
+        "e00f11973ac693683f235284945a54bb": {
+            "text": "Vereinigtes K\u00f6nigreich"
+        },
+        "1f122dd19db580fd03635dd699fb49de": {
+            "text": "Vereinigte Staaten von Amerika"
+        },
+        "125fbcd2c48a97e739c34e40096f641f": {
+            "text": "Amerikanische Jungferninseln"
+        },
+        "a0a3e881895e46eb96218f0988d405b9": {
+            "text": "Usbekistan"
+        },
+        "0acf723190dd8dde9085a41f42ddccf7": {
+            "text": "Wallis und Futuna"
+        },
+        "1bdb61bdbf5bc9a2cdc5db037ab610e0": {
+            "text": "Westsahara"
+        },
+        "724bf4ca11a567636547a92a37e397b7": {
+            "text": "Jemen"
+        },
+        "b0aa0804e676a38255af4fd70236af7c": {
+            "text": "Sambia"
+        },
+        "9d5116a2451bc98c2b46b93acbc1b4f0": {
+            "text": "Simbabwe"
+        }
+    }
+}
