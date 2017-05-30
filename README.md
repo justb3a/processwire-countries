@@ -6,7 +6,15 @@ The "value" for each country is the two-letter country code.
 
 As an added bonus, the country names are displayed in the language of the user (sorted by name ASC) if the appropriate translation was added.
 
-![Example](https://github.com/justonestep/processwire-countries/blob/master/screens/example.png)
+![Example Frontend](https://github.com/justonestep/processwire-countries/blob/master/screens/example.png)
+
+## Fieldtype
+
+This module adds a Fieldtype: **Select Options Countries**.
+
+**Field settings**:
+
+![Example Field Settings](https://github.com/justonestep/processwire-countries/blob/master/screens/fieldtype.jpg)
 
 ## Example
 
@@ -25,21 +33,6 @@ As an added bonus, the country names are displayed in the language of the user (
 
 ```
 
-**Twig**
-
-```html
-{% set countries = modules.get('ContinentsAndCountries').findByContinent('eu') %}
-
-<select>
-  {% for country in countries %}
-    <option value="{{country.code}}">
-      {{country.name}}
-    </option>
-  {% endfor %}
-</select>
-
-```
-
 
 ## Translations
 
@@ -50,7 +43,7 @@ Once you have Language Support installed, you have to add or edit the desired la
 Next, you can add the file for the language (have a look at site/modules/ContinentsAndCountries/translations/ if the translation for your language exists) or translate it manually.
 
 
-## Available Methods (atm)
+## Available Methods
 
 * getContinents()
 * getCountries()
@@ -61,10 +54,9 @@ Next, you can add the file for the language (have a look at site/modules/Contine
   * for example: ``findBy('countries', array('name', 'iso'), array(id => 2))``
   * returns: 
 
-		```php
-    	array (size=1)
-    		0 => 
-    			object(stdClass)[1059]
-      				public 'name' => string 'Åland-Inseln' (length=13)
-      				public 'iso' => string 'ALA' (length=3)
-		```
+    ```php
+      array (size=1)
+        0 => object(stdClass)[1059]
+            public 'name' => string 'Åland-Inseln' (length=13)
+            public 'iso' => string 'ALA' (length=3)
+    ```
