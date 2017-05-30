@@ -1,0 +1,107 @@
+<?php namespace ProcessWire;
+
+/**
+ * Fieldtype ContinentsAndCountries (Select)
+ *
+ * See README.md for usage instructions.
+ *
+ * ProcessWire 3.x
+ * Licensed under GNU/GPL v2, see LICENSE.TXT
+ *
+ * @author Tabea David <info@justonestep.de>
+ * @version 1.0.0
+ * @see https://github.com/justonestep/processwire-countries
+ * @see http://www.processwire.com
+ */
+
+/**
+ * Class FieldtypeContinentsAndCountries
+ */
+class FieldtypeContinentsAndCountries extends Fieldtype {
+
+  /**
+   * Retrieves module meta data
+   * Implementation of the Module interface
+   *
+   * @return array
+   * @see http://processwire.com/apigen/class-Module.html
+   */
+  public static function getModuleInfo() {
+    return array(
+      'title' => 'Select Options Countries',
+      'summary' => 'Fieldtype to store a list of continents from which to choose from via select.',
+      'version' => 100,
+      'href' => 'https://github.com/justonestep/processwire-countries',
+      'requires' => 'ContinentsAndCountries'
+    );
+  }
+
+  /**
+   * Get Inputfield
+   *
+   * @param $page
+   * @param Field $fields
+   * return InputfieldSelect
+   */
+  public function getInputfield(Page $page, Field $fields) {
+    $inputfield = $this->modules->get('InputfieldSelect');
+
+    // get countries and add them as options to the input field
+    $countries = $this->modules->get('ContinentsAndCountries')->findByContinent($fields->select_options);
+    foreach ($countries as $c) $inputfield->addOption($c->code, $c->name);
+
+    return $inputfield;
+  }
+
+  /**
+   * Get Database Schema
+   *
+   * @param Field $field
+   * @return array
+   */
+  public function getDatabaseSchema(Field $field) {
+    $schema = parent::getDatabaseSchema($field);
+    $schema['data'] = 'text NOT NULL';
+    $schema['keys']['data_exact'] = 'KEY `data_exact` (`data`(255))';
+    $schema['keys']['data'] = 'FULLTEXT KEY `data` (`data`)';
+
+    return $schema;
+  }
+
+  /**
+   * Sanitize Value
+   *
+   * @param Page $page
+   * @param Field $field
+   * @param string $value
+   * @return string
+   */
+  public function sanitizeValue(Page $page, Field $field, $value) {
+    return $this->sanitizer->text($value);
+  }
+
+  /**
+   * Get Config Input Field
+   * For PW Admin, Tab Details: List Continents
+   *
+   * @param Field $fields
+   * @return InputfieldWrapper
+   */
+  public function ___getConfigInputfields(Field $fields) {
+    $inputfields = parent::___getConfigInputfields($fields);
+
+    // get continents
+    $continents = $this->modules->get('ContinentsAndCountries')->getContinents();
+
+    // list of options
+    $select = $this->modules->get('InputfieldSelect');
+    $select->label = $this->_('Choose continent to get countries from');
+    $select->name = 'select_options';
+    $select->attr('value', count($fields->select_options) > 0 ? $fields->select_options : '');
+    foreach ($continents as $c) $select->addOption($c->code, $c->name);
+    $inputfields->add($select);
+
+    return $inputfields;
+  }
+
+}

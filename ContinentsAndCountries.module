@@ -1,17 +1,22 @@
-<?php
+<?php namespace ProcessWire;
+
+require_once(wire('config')->paths->ContinentsAndCountries . 'lib/Continents.php');
+require_once(wire('config')->paths->ContinentsAndCountries . 'lib/Countries.php');
+require_once(wire('config')->paths->ContinentsAndCountries . 'lib/ContinentsAndCountriesTranslation.php');
+use \Jos\Continents;
+use \Jos\Countries;
+use \Jos\ContinentsAndCountriesTranslation;
 
 /**
  * ContinentsAndCountries
  *
  * See README.md for usage instructions.
  *
- * ProcessWire 2.x
+ * ProcessWire 3.x
  * Licensed under GNU/GPL v2, see LICENSE.TXT
  *
- *
  * @author Tabea David <info@justonestep.de>
- * @version 0.0.2
- * @copyright Copyright (c) 2015 KF Interactive, www.kf-interactive.com, <info@kf-interactive.com>
+ * @version 1.0.0
  * @see https://github.com/justonestep/processwire-countries
  * @see http://www.processwire.com
  */
@@ -32,8 +37,8 @@ class ContinentsAndCountries extends WireData implements Module {
     return array(
       'title' => 'Continent and country names',
       'summary' => 'Tables for continent names, country names and their ISO codes.',
-      'version' => 002,
-      'href' => 'https://github.com/justonestep/processwire-countries '
+      'version' => 100,
+      'href' => 'https://github.com/justonestep/processwire-countries'
     );
   }
 
@@ -52,8 +57,8 @@ class ContinentsAndCountries extends WireData implements Module {
   public function getContinents() {
     $database = $this->wire('database');
     $table = $database->escapeTable($this->tableContinents);
-
     $query = $database->prepare("SELECT code, name FROM `$table`");
+
     return $this->fetchResult($query);
   }
 
@@ -121,7 +126,7 @@ class ContinentsAndCountries extends WireData implements Module {
   private function fetchResult($query) {
     try {
       $query->execute();
-      $res = $query->fetchAll(PDO::FETCH_OBJ);
+      $res = $query->fetchAll(\PDO::FETCH_OBJ);
     } catch (Exception $e) {
       $this->log->save('errors', '[ContinentsAndCountries]: ' . $e->getMessage() . '; "' . $query->queryString . '"');
       $res = array();
@@ -242,7 +247,6 @@ class ContinentsAndCountries extends WireData implements Module {
 
       $this->buildTables($tableCo);
     }
-
   }
 
   /**
