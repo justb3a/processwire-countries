@@ -6,7 +6,7 @@ The "value" for each country is the two-letter country code.
 
 As an added bonus, the country names are displayed in the language of the user (sorted by name ASC) if the appropriate translation was added.
 
-![Example Frontend](https://github.com/justonestep/processwire-countries/blob/master/screens/example.png)
+![Example Frontend](https://github.com/justonestep/processwire-countries/blob/master/screens/example.jpg)
 
 ## Fieldtype
 
