@@ -9,7 +9,7 @@
  * Licensed under GNU/GPL v2, see LICENSE.TXT
  *
  * @author Tabea David <info@justonestep.de>
- * @version 1.0.0
+ * @version 1.0.1
  * @see https://github.com/justonestep/processwire-countries
  * @see http://www.processwire.com
  */
@@ -30,7 +30,7 @@ class FieldtypeContinentsAndCountries extends Fieldtype {
     return array(
       'title' => 'Select Options Countries',
       'summary' => 'Fieldtype to store a list of continents from which to choose from via select.',
-      'version' => 100,
+      'version' => 101,
       'href' => 'https://github.com/justonestep/processwire-countries',
       'requires' => 'ContinentsAndCountries'
     );
@@ -47,7 +47,11 @@ class FieldtypeContinentsAndCountries extends Fieldtype {
     $inputfield = $this->modules->get('InputfieldSelect');
 
     // get countries and add them as options to the input field
-    $countries = $this->modules->get('ContinentsAndCountries')->findByContinent($fields->select_options);
+    if ($fields->select_options === 'all') {
+      $countries = $this->modules->get('ContinentsAndCountries')->getCountries();
+    } else {
+      $countries = $this->modules->get('ContinentsAndCountries')->findByContinent($fields->select_options);
+    }
     foreach ($countries as $c) $inputfield->addOption($c->code, $c->name);
 
     return $inputfield;
@@ -98,6 +102,7 @@ class FieldtypeContinentsAndCountries extends Fieldtype {
     $select->label = $this->_('Choose continent to get countries from');
     $select->name = 'select_options';
     $select->attr('value', count($fields->select_options) > 0 ? $fields->select_options : '');
+    $select->addOption('all', $this->_('– All –'));
     foreach ($continents as $c) $select->addOption($c->code, $c->name);
     $inputfields->add($select);
 
